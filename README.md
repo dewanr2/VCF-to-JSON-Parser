@@ -1,5 +1,5 @@
 # Find-Variant-VCF-to-JSON
-Goal : 
+## Introduction
 
 We will parse a variant call format file. This file has one thousand variants in it. Each line after the header lines is a variant. We'll open the variant file and inspect its contents. We will parse each line and transform it into a JSON. The output will look something like this (I have shortened the output):
 
@@ -30,3 +30,35 @@ We will parse a variant call format file. This file has one thousand variants in
 This project has several small functions that will be used to generate the JSON above. Note that the method outlined is not necessarily optimal. It is just one way of parsing the file after breaking a large problem into small parts.
 
 Note that the header which corresponds to the columns starts with one hash/pound (#) symbol. Skip all headers that start with two hashes/pounds (##).
+
+## Variant Call Format
+The Variant Call Format (VCF) specifies the format of a text file used in bioinformatics for storing gene sequence variations. The format has been developed with the advent of large-scale genotyping and DNA sequencing projects, such as the 1000 Genomes Project. Existing formats for genetic data such as General feature format (GFF) stored all of the genetic data, much of which is redundant because it will be shared across the genomes. By using the variant call format only the variations need to be stored along with a reference genome.
+
+## The VCF header
+The header begins the file and provides metadata describing the body of the file. Header lines are denoted as starting with #. Special keywords in the header are denoted with ##.
+The header contains keywords that optionally semantically and syntactically describe the fields used in the body of the file, notably INFO, FILTER, and FORMAT
+
+## The columns of a VCF
+
+ **CHROM**	The name of the sequence (typically a chromosome) on which the variation is being called. This sequence is usually known as 'the reference sequence', i.e. the sequence against which the given sample varies.
+ 
+**POS**	The 1-based position of the variation on the given sequence.
+
+**ID**	The identifier of the variation, e.g. a dbSNP rs identifier, or if unknown a ".". Multiple identifiers should be separated by semi-colons without white-space.
+
+**REF**	The reference base (or bases in the case of an indel) at the given position on the given reference sequence.
+
+**ALT**	The list of alternative alleles at this position.
+
+**QUAL**	A quality score associated with the inference of the given alleles.
+
+**FILTER**	A flag indicating which of a given set of filters the variation has passed.
+
+**INFO**	An extensible list of key-value pairs (fields) describing the variation. See below for some common fields. Multiple fields are separated by semicolons with optional values in the format: <key>=<data>[,data].
+        
+**FORMAT**	An (optional) extensible list of fields for describing the samples. See below for some common fields.
+
+**SAMPLES**	For each (optional) sample described in the file, values are given for the fields listed in FORMAT
+
+
+
