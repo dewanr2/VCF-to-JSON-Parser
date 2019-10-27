@@ -1,1 +1,1 @@
-# Find-Variant-VCF-to-JSON-
+# Find-Variant-VCF-to-JSON
