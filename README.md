@@ -60,5 +60,14 @@ The header contains keywords that optionally semantically and syntactically desc
 
 **SAMPLES**	For each (optional) sample described in the file, values are given for the fields listed in FORMAT
 
+## How script works?
+The script has 12 steps with each step building a small function which will be used in the final step to generate the final output.
 
+## Input
+A file containing 1000 variants. (lab1_data.vcf)
+
+## Output
+        - A json file (lab1.json) containing the parsed variants into json.
+
+        - A function which can take CHROM,REF,ALT ,POS and output_filename (containing all variants as json) as input and return a list of variants that match the given CHROM,REF,ALT and POS.
 
